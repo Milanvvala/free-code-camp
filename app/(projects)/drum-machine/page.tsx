@@ -5,6 +5,12 @@ import BackButton from "@/utils/BackButton"
 
 function DrumMachine() {
   const [tag, setTag] = useState("Click on any Key")
+
+  const playSound = (audioSrc: any) => {
+    const audio = new Audio(audioSrc)
+    audio.play()
+  }
+
   return (
     <>
       <main className="w-full flex flex-col bg-black text-white justify-center h-screen items-center gap-4">
@@ -20,18 +26,13 @@ function DrumMachine() {
           <div className="button">{tag}</div>
           <div className="grid grid-cols-3 gap-2" id="display">
             {drumAudios.map((e) => {
-              var audio = new Audio(e.audio)
               return (
-                <button
-                  className="drum-pad button h-12 w-full bg-blue-600"
+                <div
+                  className="drum-pad h-12 w-full bg-blue-600 button"
                   key={e.key}
-                  onClick={() => {
-                    audio.play()
-                    setTag(e.tag)
-                  }}
-                >
-                  {e.key}
-                </button>
+                  id={e.key}
+                  onClick={() => {playSound(e.audio);setTag(e.tag)}}
+                >{e.key}</div>
               )
             })}
           </div>

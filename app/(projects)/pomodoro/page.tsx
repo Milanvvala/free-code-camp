@@ -2,6 +2,8 @@
 import BackButton from "@/utils/BackButton"
 import { useEffect, useRef, useState } from "react"
 
+let interval: any
+
 export default function Pomodoro() {
   let [breakLength, setBreakLength] = useState(5)
   let [sessionLength, setSessionLength] = useState(25)
@@ -13,12 +15,10 @@ export default function Pomodoro() {
   const isPausedRef = useRef(isPaused)
   const modeRef = useRef(mode)
 
-  // const audio = new Audio(
-  //   "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"
-  // )
-  if (typeof window !== 'undefined') {
-    // Code referencing Audio constructor
-    var audio = new Audio("https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3");
+  if (typeof window !== "undefined") {
+    var audio = new Audio(
+      "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"
+    )
   }
 
   function tick() {
@@ -43,7 +43,7 @@ export default function Pomodoro() {
     secondsLeftRef.current = sessionLength * 60
     setSecondsLeft(secondsLeftRef.current)
 
-    const interval = setInterval(() => {
+    interval = setInterval(() => {
       if (isPausedRef.current) {
         return
       }
@@ -62,10 +62,13 @@ export default function Pomodoro() {
   if (seconds < 10) seconds = "0" + seconds
 
   function resetCountdown() {
-    setButtonText("PAUSE")
+    clearInterval(interval)
+    setButtonText("START")
+    setIsPaused(true)
     setMode("work")
     setBreakLength(5)
     setSessionLength(25)
+    setSecondsLeft(0)
   }
 
   return (
@@ -170,11 +173,18 @@ export default function Pomodoro() {
           <button
             className="button"
             id="reset"
-            onClick={() => {resetCountdown();setIsPaused(true)}}
+            onClick={() => {
+              resetCountdown()
+            }}
           >
             &#8635; Reset
           </button>
         </section>
+
+        <audio
+          id="beep"
+          src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"
+        ></audio>
       </main>
     </>
   )

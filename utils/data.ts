@@ -1,29 +1,3 @@
-export const quotes = [
-  {
-    text: "He who has a why to live for can bear almost any how.",
-    author: "― Friedrich Nietzsche"
-  },
-  {
-    text: "We suffer more often in imagination than in reality",
-    author: "― Lucius Annaeus Seneca"
-  },
-  {
-    text: "If someone is able to show me that what I think or do is not right, I will happily change, for I seek the truth, by which no one was ever truly harmed. It is the person who continues in his self-deception and ignorance who is harmed.",
-    author: "― Marcus Aurelius, Meditations"
-  },
-  {
-    text: "You’re not everything you could be, and you know it.",
-    author: "― Jordan Peterson"
-  },
-  {
-    text: "The light that you discover in your life is proportionate to the amount of the darkness you are willing to forthrightly confront.",
-    author: "― Jordan Peterson"
-  },
-  {
-    text: "Once someone has spent enough time cultivating bad habits and biding their time, they are much diminished. Much of what they could have been has dissipated.",
-    author: "― Jordan Peterson"
-  }
-]
 
 export const demoMd = `
 # This is a Heading (H1 Size)
@@ -97,4 +71,17 @@ export const drumAudios = [
     audio: "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3",
     tag: "Closed HH"
   }
+]
+
+export const projects = [
+  { name: "25 + 5 Clock", link: "/pomodoro" },
+  { name: "Calculator", link: "/calculator" },
+  { name: "Drum Machine", link: "/drum-machine" },
+  { name: "Markdown Previewer", link: "/markdown-previewer" },
+  { name: "Random Quote Machine", link: "/random-quote-machine" },
+  { name: "Portfolio Webpage", link: "/portfolio" },
+  { name: "Product Landing Page", link: "/product-landing" },
+  { name: "Documentation", link: "/documentation" },
+  { name: "Tribute Page", link: "/tribute-page" },
+  { name: "Survey Form", link: "/survey-form" }
 ]
